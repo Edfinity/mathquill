@@ -617,6 +617,9 @@ var Bracket = P(P(MathCommand, DelimsMixin), function(_, super_) {
     ;
     return super_.html.call(this);
   };
+  _.text = function() {
+      return this.sides[L].ch+this.ends[L].text()+this.sides[R].ch;
+  };
   _.latex = function() {
     return '\\left'+this.sides[L].ctrlSeq+this.ends[L].latex()+'\\right'+this.sides[R].ctrlSeq;
   };

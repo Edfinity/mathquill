@@ -5,6 +5,11 @@ suite('typing with auto-replaces', function() {
   });
 
   function prayWellFormedPoint(pt) { prayWellFormed(pt.parent, pt[L], pt[R]); }
+  function assertText(latex) {
+    prayWellFormedPoint(mq.__controller.cursor);
+    assert.equal(mq.text(), latex);
+  }
+
   function assertLatex(latex) {
     prayWellFormedPoint(mq.__controller.cursor);
     assert.equal(mq.latex(), latex);
@@ -133,6 +138,7 @@ suite('typing with auto-replaces', function() {
       test('nested mismatched brackets 1+(2+[3+4)+5]+6', function() {
         mq.typedText('1+(2+[3+4)+5]+6');
         assertLatex('1+\\left(2+\\left[3+4\\right)+5\\right]+6');
+        assertText('1+(2+[3+4)+5]+6');
       });
 
       suite('restrictMismatchedBrackets', function() {
@@ -154,6 +160,10 @@ suite('typing with auto-replaces', function() {
         test('[a,b) and (a,b] still work', function() {
           mq.typedText('[a,b) + (a,b]');
           assertLatex('\\left[a,b\\right)\\ +\\ \\left(a,b\\right]');
+        });
+        test('[a,b) and (a,b] still work with .text()', function() {
+          mq.typedText('[a,b) + (a,b]');
+          assertText('[a*,*b) + (a*,*b]');
         });
       });
     });
