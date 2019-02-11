@@ -402,8 +402,10 @@ var MathBlock = P(MathElement, function(_, super_) {
   };
 
   _.keystroke = function(key, e, ctrlr) {
+    var spaceBehavesLikeSpace = (ctrlr.options.spaceBehavesLikeSpaceAtRoot && ctrlr.cursor.parent === ctrlr.root);
     if (ctrlr.options.spaceBehavesLikeTab
-        && (key === 'Spacebar' || key === 'Shift-Spacebar')) {
+      && (key === 'Spacebar' || key === 'Shift-Spacebar') && !spaceBehavesLikeSpace
+    ) {
       e.preventDefault();
       ctrlr.escapeDir(key === 'Shift-Spacebar' ? L : R, key, e);
       return;
