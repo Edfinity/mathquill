@@ -177,8 +177,14 @@ var TwoWordOpNames = { limsup: 1, liminf: 1, projlim: 1, injlim: 1 };
     BuiltInOpNames[mostOps[i]] = AutoOpNames[mostOps[i]] = 1;
   }
 
-  var builtInTrigs = // why coth but not sech and csch, LaTeX?
-    'sin cos tan arcsec arcsin arccos arctan sinh cosh tanh sec csc cot coth'.split(' ');
+  // Edfinity comment:
+  // We've seen bugs due to missing sech ... so I'm adding sech and csch back in.
+  // It's possible they weren't added previously because they caused problems.
+  // But testing hasn't turned up any issues in Edfinity.
+  // Han had added this comment when adding the builtInTrigs line (commit 78ede751196f197dae3db8f569bad19fd0a178dc):
+  // why coth but not sech and csch, LaTeX?
+  var builtInTrigs =
+    'sin cos tan arcsec arcsin arccos arctan sinh cosh tanh sec sech csc csch cot coth'.split(' ');
   for (var i = 0; i < builtInTrigs.length; i += 1) {
     BuiltInOpNames[builtInTrigs[i]] = 1;
   }
