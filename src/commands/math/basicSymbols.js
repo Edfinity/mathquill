@@ -184,12 +184,12 @@ var TwoWordOpNames = { limsup: 1, liminf: 1, projlim: 1, injlim: 1 };
   // Han had added this comment when adding the builtInTrigs line (commit 78ede751196f197dae3db8f569bad19fd0a178dc):
   // why coth but not sech and csch, LaTeX?
   var builtInTrigs =
-    'sin cos tan arcsec arcsin arccos arctan sinh cosh tanh sec sech csc csch cot coth'.split(' ');
+    'asin acos atan sin cos tan arcsec arcsin arccos arctan sinh cosh tanh sec sech csc csch cot coth'.split(' ');
   for (var i = 0; i < builtInTrigs.length; i += 1) {
     BuiltInOpNames[builtInTrigs[i]] = 1;
   }
 
-  var autoTrigs = 'sin cos tan sec cosec csc cotan cot ctg'.split(' ');
+  var autoTrigs = 'asin acos atan sin cos tan sec cosec csc cotan cot ctg'.split(' ');
   for (var i = 0; i < autoTrigs.length; i += 1) {
     AutoOpNames[autoTrigs[i]] =
     AutoOpNames['arc'+autoTrigs[i]] =
