@@ -317,7 +317,7 @@ LatexCmds.varphi = //AMS and LaTeX
   bind(Variable,'\\varphi ','&phi;');
 
 LatexCmds.epsilon = //W3C or Unicode?
-  bind(Variable,'\\epsilon ','&#1013;');
+  bind(NonSymbolaSymbol,'\\epsilon ','&#1013;');
 
 LatexCmds.epsiv = //Elsevier and 9573-13
 LatexCmds.varepsilon = //AMS and LaTeX
